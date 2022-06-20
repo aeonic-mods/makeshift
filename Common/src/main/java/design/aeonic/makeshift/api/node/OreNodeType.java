@@ -2,6 +2,7 @@ package design.aeonic.makeshift.api.node;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import design.aeonic.makeshift.data.MkTags;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -37,7 +38,7 @@ public record OreNodeType(String displayName,
             ResourceLocation.CODEC.fieldOf("lootTableId").forGetter(OreNodeType::lootTableId),
             ResourceLocation.CODEC.fieldOf("mineralBlock").forGetter(OreNodeType::mineralBlock),
             Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("selectionWeight", 1).forGetter(OreNodeType::selectionWeight),
-            TagKey.codec(Registry.BIOME_REGISTRY).optionalFieldOf("biomeTag", null).forGetter(OreNodeType::biomeTag),
+            TagKey.codec(Registry.BIOME_REGISTRY).optionalFieldOf("biomeTag", MkTags.Biomes.HAS_ORE_NODE).forGetter(OreNodeType::biomeTag),
             Codec.intRange(-64, 318).fieldOf("minY").forGetter(OreNodeType::minY),
             Codec.intRange(-64, 318).fieldOf("maxY").forGetter(OreNodeType::maxY),
             Codec.floatRange(0, Float.MAX_VALUE).optionalFieldOf("minPurity", .5f).forGetter(OreNodeType::minPurity),
