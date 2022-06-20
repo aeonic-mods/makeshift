@@ -1,10 +1,10 @@
 package design.aeonic.makeshift.content.block.node;
 
-import design.aeonic.makeshift.api.client.BlockHoverData;
-import design.aeonic.makeshift.api.node.OreNodeTypes;
+import design.aeonic.makeshift.api.rendering.BlockHoverData;
 import design.aeonic.makeshift.client.MkComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -45,7 +45,7 @@ public class OreNodeBlock extends BaseEntityBlock implements BlockHoverData.Simp
     public List<Component> getHoverDataComponents(Level level, BlockPos pos) {
         List<Component> hoverData = new ArrayList<>();
         if (level.getBlockEntity(pos) instanceof OreNodeBlockEntity be && be.getOreNode() != null) {
-            hoverData.add(MkComponents.HOVER_ORE_NODE_TYPE.resolve(OreNodeTypes.getKey(be.getOreNode().getType())));
+            hoverData.add(MkComponents.HOVER_ORE_NODE_TYPE.copy().append(new TranslatableComponent(be.getOreNode().getType().displayName())));
             hoverData.add(MkComponents.HOVER_ORE_NODE_PURITY.resolve(Math.round(be.getOreNode().getPurity() * 100d) / 100d));
         }
         return hoverData;

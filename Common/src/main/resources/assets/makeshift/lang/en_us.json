@@ -6,6 +6,6 @@
   "makeshift.tooltip.portable_miner.placement": "Place within 2 blocks of any Ore Node",
   "makeshift.tooltip.portable_miner.description": "Crude mining solution; does not allow for automation",
 
-  "makeshift.hover_data.ore_node.type": "Type: %s",
+  "makeshift.hover_data.ore_node.type_prefix": "Type: ",
   "makeshift.hover_data.ore_node.purity": "Purity: %d"
 }
