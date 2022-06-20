@@ -1,0 +1,22 @@
+{
+  "structures": [
+    {
+      "structure": "makeshift:rocky_ore_node",
+      "weight": 1
+    },
+    {
+      "structure": "makeshift:sandy_ore_node",
+      "weight": 1
+    },
+    {
+      "structure": "makeshift:grassy_ore_node",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 18,
+    "separation": 0,
+    "salt": 5695842466
+  }
+}

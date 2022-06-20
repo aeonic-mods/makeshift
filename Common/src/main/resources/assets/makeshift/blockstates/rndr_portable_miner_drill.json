@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "makeshift:block/portable_miner_drill"
+    }
+  }
+}

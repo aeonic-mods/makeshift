@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_jungle",
+    "#minecraft:is_hill",
+    "#minecraft:is_taiga",
+    "#minecraft:is_forest",
+    "minecraft:mushroom_fields",
+    "minecraft:windswept_savanna",
+    "minecraft:savanna",
+    "minecraft:plains",
+    "minecraft:meadow",
+    "minecraft:grove",
+    "minecraft:sunflower_plains",
+    "minecraft:swamp",
+    "minecraft:savanna_plateau"
+  ]
+}

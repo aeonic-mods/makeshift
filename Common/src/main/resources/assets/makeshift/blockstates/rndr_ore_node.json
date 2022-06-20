@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "makeshift:block/ore_node"
+    }
+  }
+}

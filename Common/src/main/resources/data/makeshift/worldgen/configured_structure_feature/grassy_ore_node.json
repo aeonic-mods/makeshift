@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:village",
+  "config": {
+    "start_pool": "makeshift:grassy_ore_node",
+    "size": 1
+  },
+  "biomes": "#makeshift:has_grassy_ore_node",
+  "adapt_noise": true,
+  "spawn_overrides": {}
+}
