@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "gcg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:glass"
+    },
+    "c": {
+      "item": "makeshift:brass_casing"
+    }
+  },
+  "result": {
+    "item": "makeshift:brass_tank"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sbs",
+    "bwb",
+    "sbs"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:sticks"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "makeshift:brass_ingot"
+    }
+  },
+  "result": {
+    "item": "makeshift:brass_casing"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "machine.portable_miner.run": {
+    "subtitle": "subtitles.makeshift.machine.portable_miner.run",
+    "sounds": [
+      "makeshift:portable_miner/run"
+    ]
+  },
+  "machine.portable_miner.stop": {
+    "subtitle": "subtitles.makeshift.machine.portable_miner.stop",
+    "sounds": [
+      "makeshift:portable_miner/stop"
+    ]
+  }
+}
