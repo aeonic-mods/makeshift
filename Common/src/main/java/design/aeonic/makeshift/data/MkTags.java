@@ -13,6 +13,8 @@ public class MkTags {
         public static final TagKey<Biome> HAS_GRASSY_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_grassy_ore_node");
         public static final TagKey<Biome> HAS_SANDY_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_sandy_ore_node");
         public static final TagKey<Biome> HAS_ROCKY_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_rocky_ore_node");
+
+        public static final TagKey<Biome> HAS_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_ore_node");
     }
 
     private static <T> TagKey<T> make(ResourceKey<? extends Registry<T>> registry, String path) {
