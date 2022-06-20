@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "makeshift",
+  "version": "${version}",
+  "name": "Makeshift",
+  "description": "Makeshift is a unique tech mod for both Forge and Quilt/Fabric.",
+  "authors": [
+    "Aeonic"
+  ],
+  "contact": {
+    "homepage": "https://github.com/aeonic-mods/nifty",
+    "sources": "https://github.com/aeonic-mods/nifty"
+  },
+  "license": "GNU GPLv3",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "design.aeonic.makeshift.FabricMakeshift::initializeCommon"
+    ],
+    "client": [
+      "design.aeonic.makeshift.FabricMakeshift::initializeClient"
+    ]
+  },
+  "mixins": [
+    "makeshift.mixins.json",
+    "makeshift.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12",
+    "fabric": "*",
+    "minecraft": "1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+  }
+}

@@ -1,0 +1,28 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "[38,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license = "GNU GPLv3"
+[[mods]] #mandatory
+modId = "makeshift" #mandatory
+version = "${file.jarVersion}" #mandatory
+# A display name for the mod
+displayName = "Makeshift" #mandatory
+authors = "Aeonic" #optional
+description = '''Makeshift is a unique tech mod for both Forge and Quilt/Fabric.'''
+[[dependencies.makeshift]] #optional
+modId = "forge" #mandatory
+mandatory = true #mandatory
+versionRange = "[38,)" #mandatory
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.makeshift]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18,1.19)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.makeshift]]
+modId = "nifty"
+mandatory = true
+versionRange = "[1.18,1.19)"
+ordering = "NONE"
+side = "BOTH"
