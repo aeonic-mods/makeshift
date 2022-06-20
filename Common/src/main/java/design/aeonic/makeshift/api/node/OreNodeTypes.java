@@ -19,35 +19,30 @@ import java.util.Optional;
 import java.util.Random;
 
 /**
- * A server registry for ore nodes.
+ * A server registry for ore node types.
+ * New types are registered from {@link design.aeonic.makeshift.data.node.OreNodeReloadListener} via datapacks or (once implemented) with KJS.
  */
 public class OreNodeTypes {
 
     private static final BiMap<ResourceLocation, OreNodeType> NODE_TYPES = HashBiMap.create();
 
-    static {
-        // Temporary fallback type
-        NODE_TYPES.put(new ResourceLocation(Makeshift.MOD_ID, "deepslate"), new OreNodeType("block.minecraft.deepslate",
-                new ResourceLocation("blocks/deepslate"), new ResourceLocation("deepslate"), 1, null, -64, 318, .5f, 2));
-    }
-
-    public static void clearNodeTypes() {
+    public static synchronized void clearNodeTypes() {
         NODE_TYPES.clear();
     }
 
-    public static void registerNodeType(ResourceLocation id, OreNodeType type) {
+    public static synchronized void registerNodeType(ResourceLocation id, OreNodeType type) {
         NODE_TYPES.put(id, type);
     }
 
-    public static ResourceLocation getKey(OreNodeType nodeType) {
+    public static synchronized ResourceLocation getKey(OreNodeType nodeType) {
         return NODE_TYPES.inverse().get(nodeType);
     }
 
-    public static OreNodeType getNodeType(ResourceLocation location) {
+    public static synchronized OreNodeType getNodeType(ResourceLocation location) {
         return NODE_TYPES.get(location);
     }
 
-    public static OreNodeType pickNodeType(Holder<Biome> biomeHolder, BlockPos blockPos, Random random) {
+    public static synchronized OreNodeType pickNodeType(Holder<Biome> biomeHolder, BlockPos blockPos, Random random) {
         WeightedRandomList<OreNodeType> weightedList = WeightedRandomList.create(NODE_TYPES.values().stream().filter(type -> isNodeTypeValid(type, blockPos, biomeHolder)).toList());
         Optional<OreNodeType> ret = weightedList.getRandom(random);
         return ret.orElseThrow(() -> new IllegalStateException("No available ore node types for {}! Define a fallback node with no biome tag."));
