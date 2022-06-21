@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OreNodeBlock extends BaseEntityBlock implements BlockHoverData.SimpleHoverData {
+public class OreNodeBlock extends BaseEntityBlock {//implements BlockHoverData.SimpleHoverData {
 
     public OreNodeBlock(Properties props) {
         super(props);
@@ -41,13 +41,15 @@ public class OreNodeBlock extends BaseEntityBlock implements BlockHoverData.Simp
         return new OreNodeBlockEntity(blockPos, blockState);
     }
 
-    @Override
-    public List<Component> getHoverDataComponents(Level level, BlockPos pos) {
-        List<Component> hoverData = new ArrayList<>();
-        if (level.getBlockEntity(pos) instanceof OreNodeBlockEntity be && be.getOreNode() != null) {
-            hoverData.add(MkComponents.HOVER_ORE_NODE_TYPE.copy().append(new TranslatableComponent(be.getOreNode().getType().displayName())));
-            hoverData.add(MkComponents.HOVER_ORE_NODE_PURITY.resolve(Math.round(be.getOreNode().getPurity() * 100d) / 100d));
-        }
-        return hoverData;
-    }
+    // TODO: Separate scanner item so we can sync when necessary from the server
+//    @Override
+//    public List<Component> getHoverDataComponents(Level level, BlockPos pos) {
+//        List<Component> hoverData = new ArrayList<>();
+//        if (level.getBlockEntity(pos) instanceof OreNodeBlockEntity be && be.getOreNode() != null) {
+//            hoverData.add(MkComponents.HOVER_ORE_NODE_TYPE.copy().append(new TranslatableComponent(be.getOreNode().getType().displayName())));
+//            hoverData.add(MkComponents.HOVER_ORE_NODE_PURITY.resolve(Math.round(be.getOreNode().getPurity() * 100d) / 100d));
+//        }
+//        return hoverData;
+//    }
+
 }
