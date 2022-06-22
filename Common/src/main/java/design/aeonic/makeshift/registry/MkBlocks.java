@@ -54,6 +54,8 @@ public class MkBlocks {
 
         public static final GameObject<Block> ORE_NODE = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_ore_node"), Rndr::fakeBlock);
 
+        public static final GameObject<Block> ORE_NODE_MINERAL = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_ore_node_mineral"), Rndr::fakeBlock);
+
         public static final GameObject<Block> PORTABLE_MINER = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_portable_miner"), () -> new Block(BlockBehaviour.Properties.of(Material.AIR)) {
             @Override
             protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
