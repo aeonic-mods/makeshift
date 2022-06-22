@@ -50,6 +50,41 @@ public class PortableMinerMenu extends AbstractContainerMenu {
         }
     }
 
+    @Override
+    public ItemStack quickMoveStack(Player player, int index) {
+        ItemStack ret = ItemStack.EMPTY;
+        Slot slot = slots.get(index);
+        if (slot != null && slot.hasItem()) {
+            ItemStack movingStack = slot.getItem();
+            ret = movingStack.copy();
+            if (index >= 1 && index <= 3) {
+                if (!moveItemStackTo(movingStack, 4, 40, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onQuickCraft(movingStack, ret);
+            } else if (index != 0) {
+                if (slots.get(0).mayPlace(movingStack)) {
+                    if (!moveItemStackTo(movingStack, 0, 1, false))
+                        return ItemStack.EMPTY;
+                } else if (index >= 4 && index < 31) {
+                    if (!moveItemStackTo(movingStack, 31, 40, false))
+                        return ItemStack.EMPTY;
+                } else if (index >= 31 && index < 40 && !moveItemStackTo(movingStack, 4, 31, false))
+                    return ItemStack.EMPTY;
+            } else if (!moveItemStackTo(movingStack, 4, 40, false))
+                return ItemStack.EMPTY;
+
+            if (movingStack.isEmpty()) slot.set(ItemStack.EMPTY);
+            else slot.setChanged();
+
+            if (movingStack.getCount() == ret.getCount()) return ItemStack.EMPTY;
+
+            slot.onTake(player, movingStack);
+        }
+
+        return ret;
+    }
+
     int getLitTime() {
         return containerData.get(0);
     }

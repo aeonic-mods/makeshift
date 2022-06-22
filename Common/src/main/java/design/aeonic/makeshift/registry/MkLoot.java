@@ -1,4 +1,4 @@
-package design.aeonic.makeshift.data;
+package design.aeonic.makeshift.registry;
 
 import design.aeonic.makeshift.Makeshift;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
