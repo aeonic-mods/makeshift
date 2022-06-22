@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "makeshift:block/andesite",
-		"1": "makeshift:block/stone",
-		"3": "makeshift:block/tuff",
-		"4": "makeshift:block/deepslate",
-		"particle": "makeshift:block/andesite"
+		"0": "minecraft:block/andesite",
+		"1": "minecraft:block/stone",
+		"3": "minecraft:block/tuff",
+		"4": "minecraft:block/deepslate",
+		"particle": "minecraft:block/andesite"
 	},
 	"elements": [
 		{
