@@ -1,12 +1,7 @@
 package design.aeonic.makeshift.content.block.node;
 
-import design.aeonic.makeshift.api.rendering.BlockHoverData;
-import design.aeonic.makeshift.client.MkComponents;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -16,8 +11,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class OreNodeBlock extends BaseEntityBlock {//implements BlockHoverData.SimpleHoverData {
 
