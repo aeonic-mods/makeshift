@@ -6,7 +6,7 @@ import com.mojang.serialization.JsonOps;
 import design.aeonic.makeshift.Makeshift;
 import design.aeonic.makeshift.api.node.OreNodeType;
 import design.aeonic.makeshift.api.node.OreNodeTypes;
-import net.minecraft.SharedConstants;
+import design.aeonic.nifty.Nifty;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
@@ -28,7 +28,10 @@ public class OreNodeReloadListener extends SimpleJsonResourceReloadListener {
         resourceLocationJsonElementMap.forEach((key, json) -> {
             try {
                 OreNodeType.CODEC.decode(JsonOps.INSTANCE, json).get()
-                        .ifLeft(pair -> OreNodeTypes.registerNodeType(key, pair.getFirst()))
+                        .ifLeft(pair -> {
+                            String modDep = pair.getFirst().requiresMod();
+                            if (modDep.equals(Makeshift.MOD_ID) || Nifty.PLATFORM.isModLoaded(modDep)) OreNodeTypes.registerNodeType(key, pair.getFirst());
+                        })
                         .ifRight(partial -> Makeshift.LOG.error("Failed to parse node type {}: {}", key, partial.message()));
             } catch (Exception e) {
                 Makeshift.LOG.error("Error loading node type {}", key);
