@@ -53,7 +53,7 @@ public class OreNodePiece extends TemplateStructurePiece {
     }
 
     private static StructurePlaceSettings settings(OreNodeType type) {
-        return new StructurePlaceSettings().addProcessor(new BlockReplaceProcessor(Blocks.DEEPSLATE, type.getMineralBlock().defaultBlockState())).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
+        return new StructurePlaceSettings().addProcessor(new BlockReplaceProcessor(Blocks.BEDROCK, type.getMineralBlock().defaultBlockState())).addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
     }
 
 }
