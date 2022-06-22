@@ -10,9 +10,8 @@ import net.minecraft.world.level.biome.Biome;
 public class MkTags {
 
     public static class Biomes {
-        public static final TagKey<Biome> HAS_GRASSY_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_grassy_ore_node");
-        public static final TagKey<Biome> HAS_SANDY_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_sandy_ore_node");
-        public static final TagKey<Biome> HAS_ROCKY_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_rocky_ore_node");
+        public static final TagKey<Biome> HAS_SURACE_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_surface_ore_node");
+        public static final TagKey<Biome> HAS_CAVE_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_cave_ore_node");
 
         public static final TagKey<Biome> HAS_ORE_NODE = make(Registry.BIOME_REGISTRY, "has_ore_node");
     }

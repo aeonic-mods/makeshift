@@ -17,14 +17,26 @@ import java.util.Random;
 
 public class OreNodeFeature extends StructureFeature<NoneFeatureConfiguration> {
 
-    public OreNodeFeature(ResourceLocation structureKey) {
-        super(NoneFeatureConfiguration.CODEC, PieceGeneratorSupplier.simple(PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG), (builder, ctx) -> generatePieces(builder, ctx, structureKey)));
+    protected final Type type;
+
+    public OreNodeFeature(ResourceLocation structureKey, Type type) {
+        super(NoneFeatureConfiguration.CODEC, PieceGeneratorSupplier.simple(type == Type.SURFACE ? PieceGeneratorSupplier.checkForBiomeOnTop(Heightmap.Types.WORLD_SURFACE_WG) : ctx -> {
+                    // TODO: Rewrite cave structure gen
+                    ChunkPos chunkPos = ctx.chunkPos();
+                    BlockPos tmp = chunkPos.getMiddleBlockPosition(0);
+                    BlockPos blockPos = tmp.atY(ctx.chunkGenerator().getFirstFreeHeight(tmp.getX(), tmp.getZ(), Heightmap.Types.MOTION_BLOCKING, ctx.heightAccessor()));
+                    return ctx.validBiome().test(ctx.chunkGenerator().getNoiseBiome(QuartPos.fromBlock(blockPos.getX()), QuartPos.fromBlock(blockPos.getY()), QuartPos.fromBlock(blockPos.getZ())));
+                },
+                (builder, ctx) -> generatePieces(builder, ctx, structureKey, type)));
+        this.type = type;
     }
 
-    private static void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<NoneFeatureConfiguration> ctx, ResourceLocation key) {
+    private static void generatePieces(StructurePiecesBuilder builder, PieceGenerator.Context<NoneFeatureConfiguration> ctx, ResourceLocation key, Type type) {
         ChunkPos chunkPos = ctx.chunkPos();
         BlockPos tmp = chunkPos.getMiddleBlockPosition(0);
-        BlockPos blockPos = tmp.atY(ctx.chunkGenerator().getBaseHeight(tmp.getX(), tmp.getZ(), Heightmap.Types.WORLD_SURFACE_WG, ctx.heightAccessor()));
+        BlockPos blockPos = tmp.atY(type == Type.CAVE ?
+                ctx.chunkGenerator().getFirstFreeHeight(tmp.getX(), tmp.getZ(), Heightmap.Types.MOTION_BLOCKING, ctx.heightAccessor()) :
+                ctx.chunkGenerator().getBaseHeight(tmp.getX(), tmp.getZ(), Heightmap.Types.WORLD_SURFACE_WG, ctx.heightAccessor()));
 
         builder.addPiece(new OreNodePiece(ctx.structureManager(), key, key.toString(), blockPos, OreNodeTypes.pickNodeType(
                 ctx.chunkGenerator().getNoiseBiome(QuartPos.fromBlock(blockPos.getX()), QuartPos.fromBlock(blockPos.getY()), QuartPos.fromBlock(blockPos.getZ())), blockPos, new Random())));
@@ -32,7 +44,12 @@ public class OreNodeFeature extends StructureFeature<NoneFeatureConfiguration> {
 
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
+        return type == Type.SURFACE ? GenerationStep.Decoration.SURFACE_STRUCTURES : GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
+    }
+
+    public enum Type {
+        SURFACE,
+        CAVE
     }
 
 }

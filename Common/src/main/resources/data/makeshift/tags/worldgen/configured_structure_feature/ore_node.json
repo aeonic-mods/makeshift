@@ -1,8 +1,7 @@
 {
   "replace": "false",
   "values": [
-    "makeshift:grassy_ore_node",
-    "makeshift:sandy_ore_node",
-    "makeshift:rocky_ore_node"
+    "makeshift:cave_ore_node",
+    "makeshift:surface_ore_node"
   ]
 }

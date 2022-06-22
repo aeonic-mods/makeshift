@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "makeshift:cave_ore_node",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 4,
+    "separation": 0,
+    "salt": 5695842466
+  }
+}
