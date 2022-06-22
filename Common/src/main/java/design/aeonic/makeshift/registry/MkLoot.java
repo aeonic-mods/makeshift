@@ -1,9 +1,14 @@
 package design.aeonic.makeshift.registry;
 
 import design.aeonic.makeshift.Makeshift;
+import design.aeonic.makeshift.data.node.OreNodePurityProvider;
+import design.aeonic.nifty.Nifty;
+import design.aeonic.nifty.api.registry.GameObject;
+import net.minecraft.core.Registry;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.providers.number.LootNumberProviderType;
 
 public class MkLoot {
 
@@ -16,5 +21,10 @@ public class MkLoot {
             .required(LootContextParams.BLOCK_ENTITY)
             .required(ORE_NODE_PURITY_PARAM)
             .build();
+
+    public static final GameObject<LootNumberProviderType> ORE_NODE_PURITY_PROVIDER = Nifty.REGISTRY.register(
+            Registry.LOOT_NUMBER_PROVIDER_TYPE, Makeshift.location("ore_node_purity"), () -> new LootNumberProviderType(new OreNodePurityProvider.Serializer()));
+
+    public static void init() {}
 
 }

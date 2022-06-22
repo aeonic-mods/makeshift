@@ -32,6 +32,7 @@ public class Makeshift {
         // Other registries
         MkBlockEntities.init();
         MkSoundEvents.init();
+        MkLoot.init();
         MkStructureProcessors.init();
         MkStructurePieces.init();
         MkStructureFeatures.init();

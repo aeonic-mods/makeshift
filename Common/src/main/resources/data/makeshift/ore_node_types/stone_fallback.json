@@ -1,10 +1,10 @@
 {
   "displayName": "block.minecraft.stone",
-  "lootTableId": "minecraft:blocks/stone",
+  "lootTableId": "makeshift:ore_nodes/stone",
   "mineralBlock": "minecraft:stone",
   "selectionWeight": 1,
   "minY": -64,
   "maxY": 318,
-  "minPurity": 1.0,
-  "maxPurity": 1.0
+  "minPurity": 0.5,
+  "maxPurity": 5.0
 }
