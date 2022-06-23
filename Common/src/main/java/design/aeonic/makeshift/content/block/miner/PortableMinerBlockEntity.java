@@ -79,9 +79,11 @@ public class PortableMinerBlockEntity extends BlockEntity implements MenuProvide
     }
 
     public void serverTick(ServerLevel level, BlockPos pos, BlockState state) {
-        if (litTime > 0 && --litTime <= 0) {
-            level.setBlock(pos, state.setValue(PortableMinerBlock.POWERED, false), Block.UPDATE_ALL);
-            setChanged();
+        if (litTime > 0) {
+            if (--litTime <= 0) {
+                level.setBlock(pos, state.setValue(PortableMinerBlock.POWERED, false), Block.UPDATE_ALL);
+                setChanged();
+            }
         }
         else {
             ItemStack fuelStack = itemHandler.get(0);
