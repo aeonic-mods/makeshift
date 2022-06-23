@@ -18,6 +18,8 @@ import java.util.Random;
 /**
  * Describes a type of ore node that can generate in the world.
  *
+ * @param priority        defines this type's priority - if an ore node type is loaded at the same key with a higher priority, it overwrites this one.
+ *                        Makeshift's default ore nodes are loaded with a priority of -1.
  * @param requiresMod     if present, the node only registers if the given mod is loaded
  * @param displayName     the node type's display name to show on hover on the client, can be a raw string or a localization key
  * @param lootTableId     the ID of the loot table to use for node outputs
@@ -29,13 +31,14 @@ import java.util.Random;
  * @param minPurity       the minimum purity of this node; purity is counted as luck towards the given loot table
  * @param maxPurity       the maximum purity of this node; purity is counted as luck towards the given loot table
  */
-public record OreNodeType(String requiresMod, String displayName,
+public record OreNodeType(int priority, String requiresMod, String displayName,
                           ResourceLocation lootTableId, ResourceLocation mineralBlock,
                           int selectionWeight,
                           @Nullable TagKey<Biome> biomeTag, int minY, int maxY, float minPurity,
                           float maxPurity) implements WeightedEntry {
 
     public static final Codec<OreNodeType> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+            Codec.INT.optionalFieldOf("priority", 0).forGetter(OreNodeType::priority),
             Codec.STRING.optionalFieldOf("requiresMod", Makeshift.MOD_ID).forGetter(OreNodeType::requiresMod),
             Codec.STRING.fieldOf("displayName").forGetter(OreNodeType::displayName),
             ResourceLocation.CODEC.fieldOf("lootTableId").forGetter(OreNodeType::lootTableId),

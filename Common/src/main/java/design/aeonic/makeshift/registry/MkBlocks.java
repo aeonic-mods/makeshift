@@ -19,8 +19,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
-import javax.sound.sampled.Port;
-
 public class MkBlocks {
 
     public static final GameObject<Block> BRASS_BLOCK = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("brass_block"), () ->
@@ -41,7 +39,8 @@ public class MkBlocks {
 
     public static final GameObject<PortableMinerBlock> PORTABLE_MINER = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("portable_miner"), () ->
             new PortableMinerBlock(BlockBehaviour.Properties.copy(BRASS_CASING.get())
-                    .noOcclusion().isValidSpawn(MkBlocks::never).isRedstoneConductor(MkBlocks::never).sound(SoundType.METAL)));
+                    .noOcclusion().isValidSpawn(MkBlocks::never).isRedstoneConductor(MkBlocks::never).sound(SoundType.METAL)
+                    .emissiveRendering((state, getter, pos) -> state.getValue(PortableMinerBlock.POWERED)).lightLevel(state -> state.getValue(PortableMinerBlock.POWERED) ? 13: 0)));
 
     /**
      * Fake blocks used to load json models.

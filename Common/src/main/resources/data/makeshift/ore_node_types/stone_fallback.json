@@ -1,4 +1,5 @@
 {
+  "priority": -1,
   "displayName": "block.minecraft.stone",
   "lootTableId": "makeshift:ore_nodes/stone",
   "mineralBlock": "minecraft:stone",

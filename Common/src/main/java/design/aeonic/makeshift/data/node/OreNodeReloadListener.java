@@ -30,6 +30,8 @@ public class OreNodeReloadListener extends SimpleJsonResourceReloadListener {
                 OreNodeType.CODEC.decode(JsonOps.INSTANCE, json).get()
                         .ifLeft(pair -> {
                             String modDep = pair.getFirst().requiresMod();
+                            OreNodeType old;
+                            if ((old = OreNodeTypes.getNodeType(key)) != null && old.priority() > pair.getFirst().priority()) return;
                             if (modDep.equals(Makeshift.MOD_ID) || Nifty.PLATFORM.isModLoaded(modDep)) OreNodeTypes.registerNodeType(key, pair.getFirst());
                         })
                         .ifRight(partial -> Makeshift.LOG.error("Failed to parse node type {}: {}", key, partial.message()));
