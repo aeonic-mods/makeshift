@@ -1,0 +1,11 @@
+{
+  "priority": -1,
+  "displayName": "block.minecraft.iron_ore",
+  "lootTableId": "makeshift:ore_nodes/iron",
+  "mineralBlock": "minecraft:raw_iron_block",
+  "selectionWeight": 5,
+  "minY": -64,
+  "maxY": 318,
+  "minPurity": 0.5,
+  "maxPurity": 2.0
+}

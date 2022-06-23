@@ -1,0 +1,11 @@
+{
+  "priority": -1,
+  "displayName": "block.minecraft.copper_ore",
+  "lootTableId": "makeshift:ore_nodes/copper",
+  "mineralBlock": "minecraft:raw_copper_block",
+  "selectionWeight": 10,
+  "minY": -64,
+  "maxY": 318,
+  "minPurity": 0.5,
+  "maxPurity": 2.0
+}

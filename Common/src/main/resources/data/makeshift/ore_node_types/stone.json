@@ -6,6 +6,6 @@
   "selectionWeight": 1,
   "minY": -64,
   "maxY": 318,
-  "minPurity": 0.5,
-  "maxPurity": 5.0
+  "minPurity": 1.0,
+  "maxPurity": 1.0
 }

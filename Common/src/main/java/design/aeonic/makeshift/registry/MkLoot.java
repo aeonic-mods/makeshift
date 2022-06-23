@@ -2,6 +2,7 @@ package design.aeonic.makeshift.registry;
 
 import design.aeonic.makeshift.Makeshift;
 import design.aeonic.makeshift.data.node.OreNodePurityProvider;
+import design.aeonic.makeshift.data.node.OreNodePurityRandom;
 import design.aeonic.nifty.Nifty;
 import design.aeonic.nifty.api.registry.GameObject;
 import net.minecraft.core.Registry;
@@ -24,6 +25,9 @@ public class MkLoot {
 
     public static final GameObject<LootNumberProviderType> ORE_NODE_PURITY_PROVIDER = Nifty.REGISTRY.register(
             Registry.LOOT_NUMBER_PROVIDER_TYPE, Makeshift.location("ore_node_purity"), () -> new LootNumberProviderType(new OreNodePurityProvider.Serializer()));
+
+    public static final GameObject<LootNumberProviderType> ORE_NODE_RANDOM_PROVIDER = Nifty.REGISTRY.register(
+            Registry.LOOT_NUMBER_PROVIDER_TYPE, Makeshift.location("ore_node_purity_random"), () -> new LootNumberProviderType(new OreNodePurityRandom.Serializer()));
 
     public static void init() {}
 

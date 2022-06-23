@@ -3,7 +3,7 @@
   "pools": [
     {
       "rolls": {
-        "type": "makeshift:ore_node_purity"
+        "type": "makeshift:ore_node_purity_random"
       },
       "entries": [
         {
