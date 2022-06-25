@@ -42,12 +42,6 @@ public class PortableMinerRenderer implements BlockEntityRenderer<PortableMinerB
         Direction facing = state.getValue(PortableMinerBlock.FACING);
         boolean powered = state.getValue(PortableMinerBlock.POWERED);
 
-        // Body
-        blockRenderDispatcher.renderSingleBlock(MkBlocks.Rndr.PORTABLE_MINER.get().defaultBlockState()
-                        .setValue(PortableMinerBlock.FACING, facing)
-                        .setValue(PortableMinerBlock.POWERED, powered),
-                poseStack, multiBufferSource, i, i1);
-
         // Drill
         poseStack.pushPose();
         long time = Util.getMillis();

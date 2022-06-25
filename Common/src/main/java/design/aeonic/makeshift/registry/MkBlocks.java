@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -54,13 +53,6 @@ public class MkBlocks {
         public static final GameObject<Block> ORE_NODE = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_ore_node"), Rndr::fakeBlock);
 
         public static final GameObject<Block> ORE_NODE_MINERAL = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_ore_node_mineral"), Rndr::fakeBlock);
-
-        public static final GameObject<Block> PORTABLE_MINER = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_portable_miner"), () -> new Block(BlockBehaviour.Properties.of(Material.AIR)) {
-            @Override
-            protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-                builder.add(PortableMinerBlock.POWERED, PortableMinerBlock.FACING);
-            }
-        });
 
         public static final GameObject<Block> PORTABLE_MINER_DRILL = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_portable_miner_drill"), () -> new Block(BlockBehaviour.Properties.of(Material.AIR)));
 
