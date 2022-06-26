@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -62,6 +63,17 @@ public class PortableMinerBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
         return super.use(state, level, pos, player, hand, res);
+    }
+
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean flag) {
+        super.onRemove(state, level, pos, state, flag);
+        if (!state.is(newState.getBlock())) {
+            if (level.getBlockEntity(pos) instanceof PortableMinerBlockEntity be) {
+                if (level instanceof ServerLevel) {
+                    Containers.dropContents(level, pos, be.itemHandler.asContainer());
+                }
+            }
+        }
     }
 
     @Nullable
