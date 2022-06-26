@@ -33,8 +33,8 @@ public class OreNodeRenderer implements BlockEntityRenderer<OreNodeBlockEntity> 
     public void render(OreNodeBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int i1) {
         // FIXME: Ore node rendering with actual mineral types
 
-        // Main model
-        blockRenderDispatcher.renderSingleBlock(MkBlocks.Rndr.ORE_NODE.get().defaultBlockState(), poseStack, multiBufferSource, i, i1);
+        // Mineral
+        blockRenderDispatcher.renderSingleBlock(MkBlocks.Rndr.ORE_NODE_MINERAL.get().defaultBlockState(), poseStack, multiBufferSource, i, i1);
 
         // Portable Miner valid locations
         if (minecraft.player != null && (minecraft.player.getMainHandItem().is(MkItems.PORTABLE_MINER.get()) || minecraft.player.getOffhandItem().is(MkItems.PORTABLE_MINER.get()))) {
