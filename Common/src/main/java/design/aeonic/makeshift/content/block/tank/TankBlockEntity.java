@@ -6,6 +6,8 @@ import design.aeonic.nifty.Nifty;
 import design.aeonic.nifty.api.fluid.SimpleFluidHandler;
 import design.aeonic.nifty.api.fluid.SimpleTank;
 import design.aeonic.nifty.api.item.FluidHandler;
+import design.aeonic.nifty.api.network.container.ContainerFields;
+import design.aeonic.nifty.api.network.container.DataField;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
@@ -17,7 +19,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,35 +32,19 @@ public class TankBlockEntity extends BlockEntity implements MenuProvider {
     public final FluidHandler tank;
     public final SimpleTank tankSlot;
 
-    protected final ContainerData containerData = new ContainerData() {
-        @Override
-        public int get(int i) {
-            BlockPos pos = getBlockPos();
-            return switch (i) {
-                case 0 -> Registry.FLUID.getId(tankSlot.get().getFluid());
-                // Container data only stores 16 bits
-                case 1 -> tankSlot.get().getAmount() & 0xffff;
-                case 2 -> (tankSlot.get().getAmount() >> 16) & 0xffff;
-                case 3 -> capacity  & 0xffff;
-                case 4 -> (capacity >> 16) % 0xffff;
-                default -> throw new IllegalStateException();
-            };
-        }
-
-        @Override
-        public void set(int i, int value) {}
-
-        @Override
-        public int getCount() {
-            return 5;
-        }
-    };
+    protected final ContainerFields containerData;
 
     public TankBlockEntity(BlockPos pos, BlockState state, int capacity) {
         super(MkBlockEntities.TANK.get(), pos, state);
         this.capacity = capacity;
         tankSlot = new SimpleTank(this::setChanged, capacity);
         tank = Nifty.WRAPPERS.fluidHandler(new SimpleFluidHandler(tankSlot));
+
+        containerData = new ContainerFields(
+                new DataField.ShortField(() -> (short) Registry.FLUID.getId(tankSlot.get().getFluid())),
+                new DataField.IntField(() -> tankSlot.get().getAmount()),
+                new DataField.IntField(() -> capacity)
+        );
     }
 
     @Override
