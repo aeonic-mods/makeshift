@@ -22,7 +22,7 @@ public class MkBlocks {
 
     public static final GameObject<Block> BRASS_BLOCK = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("brass_block"), () ->
             new Block(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.GOLD)
-                    .requiresCorrectToolForDrops().strength(4f, 6f).sound(SoundType.COPPER)));
+                    .strength(4f, 6f).sound(SoundType.COPPER)));
 
     public static final GameObject<Block> BRASS_CASING = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("brass_casing"), () ->
             new Block(BlockBehaviour.Properties.copy(BRASS_BLOCK.get())
@@ -49,8 +49,6 @@ public class MkBlocks {
         private static Block fakeBlock() {
             return new Block(BlockBehaviour.Properties.of(Material.AIR));
         }
-
-        public static final GameObject<Block> ORE_NODE = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_ore_node"), Rndr::fakeBlock);
 
         public static final GameObject<Block> ORE_NODE_MINERAL = Nifty.REGISTRY.register(Registry.BLOCK, Makeshift.location("rndr_ore_node_mineral"), Rndr::fakeBlock);
 
