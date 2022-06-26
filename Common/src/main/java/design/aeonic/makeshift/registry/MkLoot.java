@@ -1,8 +1,8 @@
 package design.aeonic.makeshift.registry;
 
 import design.aeonic.makeshift.Makeshift;
-import design.aeonic.makeshift.data.node.OreNodePurityProvider;
-import design.aeonic.makeshift.data.node.OreNodePurityRandom;
+import design.aeonic.makeshift.data.loot.OreNodePurityProvider;
+import design.aeonic.makeshift.data.loot.OreNodePurityRandom;
 import design.aeonic.nifty.Nifty;
 import design.aeonic.nifty.api.registry.GameObject;
 import net.minecraft.core.Registry;

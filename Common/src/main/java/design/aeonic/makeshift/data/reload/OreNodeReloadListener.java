@@ -1,4 +1,4 @@
-package design.aeonic.makeshift.data.node;
+package design.aeonic.makeshift.data.reload;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;

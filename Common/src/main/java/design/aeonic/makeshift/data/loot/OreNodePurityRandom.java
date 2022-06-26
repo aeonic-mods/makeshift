@@ -1,4 +1,4 @@
-package design.aeonic.makeshift.data.node;
+package design.aeonic.makeshift.data.loot;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;

@@ -2,7 +2,7 @@ package design.aeonic.makeshift;
 
 import design.aeonic.makeshift.api.node.OreNode;
 import design.aeonic.makeshift.content.block.node.OreNodeRenderer;
-import design.aeonic.makeshift.data.node.OreNodeReloadListener;
+import design.aeonic.makeshift.data.reload.OreNodeReloadListener;
 import design.aeonic.makeshift.registry.MkScreens;
 import design.aeonic.makeshift.content.block.node.OreNodeBlockEntity;
 import design.aeonic.makeshift.content.block.miner.PortableMinerRenderer;

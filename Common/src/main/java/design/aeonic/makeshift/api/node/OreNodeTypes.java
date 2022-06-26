@@ -2,25 +2,19 @@ package design.aeonic.makeshift.api.node;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import design.aeonic.makeshift.Makeshift;
+import design.aeonic.makeshift.data.reload.OreNodeReloadListener;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTables;
-import org.apache.logging.log4j.LogManager;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.Random;
 
 /**
  * A server registry for ore node types.
- * New types are registered from {@link design.aeonic.makeshift.data.node.OreNodeReloadListener} via datapacks or (once implemented) with KJS.
+ * New types are registered from {@link OreNodeReloadListener} via datapacks or (once implemented) with KJS.
  */
 public class OreNodeTypes {
 

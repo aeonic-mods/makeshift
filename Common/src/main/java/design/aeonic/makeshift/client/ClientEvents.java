@@ -1,7 +1,7 @@
 package design.aeonic.makeshift.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import design.aeonic.makeshift.api.rendering.BlockHoverData;
+import design.aeonic.makeshift.api.client.BlockHoverData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;

@@ -33,11 +33,9 @@ public class MkItems {
             new TooltipBlockItem(MkBlocks.PORTABLE_MINER.get(), new Item.Properties().tab(MkTabs.TAB_MAIN),
                     MkComponents.TOOLTIP_PORTABLE_MINER_PLACEMENT, MkComponents.TOOLTIP_PORTABLE_MINER_DESCRIPTION));
 
-    public static void init() {
+    public static void init() {}
 
-    }
-
-    public static <T extends Item> GameObject<T> register(String name, Supplier<T> supplier) {
+    static <T extends Item> GameObject<T> register(String name, Supplier<T> supplier) {
         return Nifty.REGISTRY.register(Registry.ITEM, Makeshift.location(name), supplier);
     }
 
