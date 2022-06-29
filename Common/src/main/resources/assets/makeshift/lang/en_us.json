@@ -2,6 +2,7 @@
   "gui.makeshift.tank": "Fluid Tank",
   "gui.makeshift.portable_miner": "Portable Miner",
 
+  "makeshift.tooltip.does_retain": "Retains contents when broken",
   "makeshift.tooltip.does_not_retain": "Does not retain contents when broken",
   "makeshift.tooltip.portable_miner.placement": "Place within 2 blocks of any Ore Node",
   "makeshift.tooltip.portable_miner.description": "Crude mining solution; does not allow for automation",

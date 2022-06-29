@@ -9,13 +9,14 @@ import net.minecraft.sounds.SoundEvent;
 
 public class MkSoundEvents {
 
-    public static final GameObject<SoundEvent> PORTABLE_MINER_RUN = register(Makeshift.location("machine.portable_miner.run"));
-    public static final GameObject<SoundEvent> PORTABLE_MINER_STOP = register(Makeshift.location("machine.portable_miner.stop"));
-
-    private static GameObject<SoundEvent> register(ResourceLocation location) {
-        return Nifty.REGISTRY.register(Registry.SOUND_EVENT, location, () -> new SoundEvent(location));
-    }
+    public static final GameObject<SoundEvent> PORTABLE_MINER_RUN = register("machine.portable_miner.run");
+    public static final GameObject<SoundEvent> PORTABLE_MINER_STOP = register("machine.portable_miner.stop");
 
     public static void init() {}
+
+    private static GameObject<SoundEvent> register(String name) {
+        ResourceLocation key = Makeshift.location(name);
+        return Nifty.REGISTRY.register(Registry.SOUND_EVENT, key, () -> new SoundEvent(key));
+    }
 
 }

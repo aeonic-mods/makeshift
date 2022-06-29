@@ -1,11 +1,20 @@
 package design.aeonic.makeshift.content.block.miner;
 
-import design.aeonic.nifty.api.client.screen.ModularMenuScreen;
+import design.aeonic.makeshift.api.client.ui.MkUiSets;
+import design.aeonic.makeshift.api.machine.block.MachineScreen;
+import design.aeonic.makeshift.client.MkComponents;
 import design.aeonic.nifty.api.client.ui.UiSets;
+import design.aeonic.nifty.api.client.ui.template.BooleanUiElementTemplate;
+import design.aeonic.nifty.api.client.ui.template.FillingUiElementTemplate;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class PortableMinerScreen extends ModularMenuScreen<PortableMinerMenu> {
+import java.util.Collections;
+import java.util.List;
+
+public class PortableMinerScreen extends MachineScreen<PortableMinerMenu> {
+
+    private static final List<Component> INVALID_LOCATION = List.of(MkComponents.TOOLTIP_PORTABLE_MINER_PLACEMENT);
 
     public PortableMinerScreen(PortableMinerMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -15,16 +24,20 @@ public class PortableMinerScreen extends ModularMenuScreen<PortableMinerMenu> {
     protected void init() {
         super.init();
 
-        addUiElement(UiSets.Vanilla.ITEM_SLOT_NORMAL, () -> null, 34, 34);
-        addUiElement(UiSets.Vanilla.ITEM_SLOT_NORMAL, () -> null, 88, 34);
-        addUiElement(UiSets.Vanilla.ITEM_SLOT_NORMAL, () -> null, 106, 34);
-        addUiElement(UiSets.Vanilla.ITEM_SLOT_NORMAL, () -> null, 124, 34);
+        setBackground(MkUiSets.Crude.BACKGROUND);
 
-        addUiElement(UiSets.Vanilla.BURN_TIME_INDICATOR,
-                () -> this::getRemainingBurnTime, 36, 55);
+        addSlot(0, UiSets.Vanilla.ITEM_SLOT_NORMAL);
+        addSlot(1, UiSets.Vanilla.ITEM_SLOT_NORMAL);
+        addSlot(2, UiSets.Vanilla.ITEM_SLOT_NORMAL);
+        addSlot(3, UiSets.Vanilla.ITEM_SLOT_NORMAL);
 
-        addUiElement(UiSets.Vanilla.RECIPE_ARROW_FILLING,
-                () -> this::getExtractProgress, 59, 35);
+        BooleanUiElementTemplate.Context<FillingUiElementTemplate.FillLevel, Void> arrowContext = new BooleanUiElementTemplate.SimpleContext<>(
+                menu::canRun, () -> this::getExtractProgress, () -> null);
+
+        addUiElement(UiSets.Vanilla.RECIPE_ARROW_FILLING_TOGGLABLE, () -> arrowContext, 59, 35)
+                .setTooltip(() -> menu.canRun() ? Collections.emptyList() : INVALID_LOCATION);
+
+        addUiElement(UiSets.Vanilla.BURN_TIME_INDICATOR, () -> this::getRemainingBurnTime, 36, 55);
     }
 
     protected float getExtractProgress() {
