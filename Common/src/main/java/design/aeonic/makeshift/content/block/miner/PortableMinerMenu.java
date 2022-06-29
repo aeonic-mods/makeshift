@@ -5,6 +5,8 @@ import design.aeonic.makeshift.registry.MkMenus;
 import design.aeonic.makeshift.util.container.ContainerSlot;
 import design.aeonic.nifty.api.network.container.ContainerFields;
 import design.aeonic.nifty.api.network.container.DataField;
+import design.aeonic.nifty.api.network.container.field.BooleanField;
+import design.aeonic.nifty.api.network.container.field.IntField;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,9 +17,10 @@ public class PortableMinerMenu extends MachineMenu {
 
     public PortableMinerMenu(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new SimpleContainer(4), new ContainerFields(
-                new DataField.IntField(),
-                new DataField.IntField(),
-                new DataField.IntField()
+                new IntField(),
+                new IntField(),
+                new IntField(),
+                new BooleanField()
         ));
     }
 
@@ -31,6 +34,10 @@ public class PortableMinerMenu extends MachineMenu {
         addSlot(new ContainerSlot.OutputSlot(container, 1, 89, 35));
         addSlot(new ContainerSlot.OutputSlot(container, 2, 107, 35));
         addSlot(new ContainerSlot.OutputSlot(container, 3, 125, 35));
+    }
+
+    boolean canRun() {
+        return ((ContainerFields) containerData()).getField(3);
     }
 
     int getLitTime() {

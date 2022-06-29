@@ -10,7 +10,8 @@ import design.aeonic.nifty.api.aspect.Aspect;
 import design.aeonic.nifty.api.item.SimpleItemHandler;
 import design.aeonic.nifty.api.item.SimpleSlot;
 import design.aeonic.nifty.api.network.container.ContainerFields;
-import design.aeonic.nifty.api.network.container.DataField;
+import design.aeonic.nifty.api.network.container.field.BooleanField;
+import design.aeonic.nifty.api.network.container.field.IntField;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -115,9 +116,10 @@ public class PortableMinerBlockEntity extends AbstractMinerBlockEntity<MachineCo
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new PortableMinerMenu(i, inventory, itemHandler.asContainer(), new ContainerFields(
-                new DataField.IntField(machineConsumption::getLitTime),
-                new DataField.IntField(machineConsumption::getLitDuration),
-                new DataField.IntField(() -> extractProgress)
+                new IntField(machineConsumption::getLitTime),
+                new IntField(machineConsumption::getLitDuration),
+                new IntField(() -> extractProgress),
+                new BooleanField(this::canRun)
         ));
     }
 

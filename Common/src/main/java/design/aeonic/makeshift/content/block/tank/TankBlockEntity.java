@@ -7,7 +7,8 @@ import design.aeonic.nifty.api.fluid.SimpleFluidHandler;
 import design.aeonic.nifty.api.fluid.SimpleTank;
 import design.aeonic.nifty.api.item.FluidHandler;
 import design.aeonic.nifty.api.network.container.ContainerFields;
-import design.aeonic.nifty.api.network.container.DataField;
+import design.aeonic.nifty.api.network.container.field.IntField;
+import design.aeonic.nifty.api.network.container.field.ShortField;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
@@ -41,9 +42,9 @@ public class TankBlockEntity extends BlockEntity implements MenuProvider {
         tank = Nifty.WRAPPERS.fluidHandler(new SimpleFluidHandler(tankSlot));
 
         containerData = new ContainerFields(
-                new DataField.ShortField(() -> (short) Registry.FLUID.getId(tankSlot.get().getFluid())),
-                new DataField.IntField(() -> tankSlot.get().getAmount()),
-                new DataField.IntField(() -> capacity)
+                new ShortField(() -> (short) Registry.FLUID.getId(tankSlot.get().getFluid())),
+                new IntField(() -> tankSlot.get().getAmount()),
+                new IntField(() -> capacity)
         );
     }
 

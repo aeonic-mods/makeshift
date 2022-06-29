@@ -5,7 +5,8 @@ import design.aeonic.makeshift.registry.MkMenus;
 import design.aeonic.nifty.api.fluid.AbstractTank;
 import design.aeonic.nifty.api.fluid.FluidStack;
 import design.aeonic.nifty.api.network.container.ContainerFields;
-import design.aeonic.nifty.api.network.container.DataField;
+import design.aeonic.nifty.api.network.container.field.IntField;
+import design.aeonic.nifty.api.network.container.field.ShortField;
 import net.minecraft.core.Registry;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerData;
@@ -17,7 +18,7 @@ public class TankMenu extends MachineMenu {
 
     public TankMenu(int syncId, Inventory playerInventory) {
         this(syncId, playerInventory, new ContainerFields(
-                new DataField.ShortField(), new DataField.IntField(), new DataField.IntField()
+                new ShortField(), new IntField(), new IntField()
         ));
     }
 
@@ -32,7 +33,7 @@ public class TankMenu extends MachineMenu {
     }
 
     void updateTank() {
-        var data = (ContainerFields) containerData;
+        var data = (ContainerFields) containerData();
 
         FluidStack old = tank.get();
         Fluid fluid = Registry.FLUID.byId((short) data.getField(0));
